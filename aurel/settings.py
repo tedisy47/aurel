@@ -25,7 +25,7 @@ SECRET_KEY = '1xkh1wjnw3xe=j&rauklp$enls10lbv6sz5ul1t5d3x_51q%or'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['kocplay.com','localhost']
 
 
 # Application definition
