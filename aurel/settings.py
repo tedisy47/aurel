@@ -81,9 +81,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'aurel',
-        'HOST': 'localhost',
-        'USER': 'admin',
-        'PASSWORD' :'admin'
+        'HOST': '139.99.88.192',
+        'USER': 'kocpaly',
+        'PASSWORD' :'jkt4774!'
     }
 }
 
