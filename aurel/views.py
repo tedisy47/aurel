@@ -4,9 +4,19 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib import messages
 
+from image_description.forms import UploadgambarForm
 # import requests
 import json
 # Create your views here.
+
+def index(request):
+
+	
+	context = {
+		'form' : UploadgambarForm(),
+	}
+	return render(request,'form_.html',context)
+
 
 def login(requests):
 	# print(requests)

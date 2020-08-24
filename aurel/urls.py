@@ -14,7 +14,8 @@ url_image = [
 urlpatterns = [
     url('admin/', admin.site.urls),
     # url(r'^home/', views.welcome),
-    url(r'^$', views.welcome, name="login"),
+    url(r'^$', views.index),
+    url(r'^login_', views.welcome, name="login"),
     url(r'^login/', views.login),
     url(r'^logout/', views.logout, name = "logout"),
     url(r'^home/', include(url_image)),

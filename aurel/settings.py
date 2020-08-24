@@ -25,7 +25,7 @@ SECRET_KEY = '1xkh1wjnw3xe=j&rauklp$enls10lbv6sz5ul1t5d3x_51q%or'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kocplay.com','localhost']
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -81,9 +81,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'aurel',
-        'HOST': '139.99.88.192',
-        'USER': 'kocpaly',
-        'PASSWORD' :'jkt4774!'
+        'HOST': 'localhost',
+        'USER': 'root',
+        'PASSWORD' :''
     }
 }
 

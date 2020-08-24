@@ -4,3 +4,8 @@ from django.db import models
 # models.py 
 class Images(models.Model): 
 	images = models.ImageField(upload_to='images/')
+
+class Kamus(models.Model):
+	bugis = models.CharField(max_length=225)
+	indonesia = models.CharField(max_length=225)
+		
