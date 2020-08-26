@@ -9,7 +9,10 @@ from image_description import views as image_description
 
 url_image = [
 	url(r'^$',image_description.index),
-	url(r'upload_image',image_description.upload_image),
+    url(r'^upload_image/$',image_description.upload_image),
+    url(r'^kamus/$',image_description.kamus),
+    url(r'^kamus_insert/$',image_description.kamus_insert),    
+    url(r'^kamus_delete/(?P<id>\d+)$', image_description.kamus_delete),
 ]
 urlpatterns = [
     url('admin/', admin.site.urls),
