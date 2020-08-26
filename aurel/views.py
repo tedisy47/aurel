@@ -21,7 +21,7 @@ def login(requests):
 				return redirect('/home/')
 				# return HttpResponse('ok')
 	else:
-		return render(requests,'login.html')
+		return redirect('/welcome/')
 
 
 
