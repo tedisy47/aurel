@@ -3,12 +3,13 @@ from django.shortcuts import  render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
-from .forms import UploadgambarForm
+from .forms import UploadgambarForm, Kamusform
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
-
+from .models import Kamus
 import requests
 import json
+import random
 
 
 import string
@@ -29,7 +30,6 @@ import numpy as np
 from tqdm import tqdm_notebook as tqdm
 # tqdm().pandas()
 # Create your views here.
-
 def index(request):
 
 	if not request.user.is_authenticated:
@@ -45,39 +45,68 @@ def index(request):
 
 def upload_image(request):
 	if request.method == 'POST':
+		myfile = request.FILES['image']
+		fs = FileSystemStorage()
+		filename = fs.save(myfile.name, myfile)
+		uploaded_file_url = fs.url(filename)
 		images = UploadgambarForm(request.POST, request.FILES)
-		# print(request)
-		doc = request.FILES['image'].read();
-		# if images.is_valid():
-		# 	images.save()
-		# 	return HttpResponse('ok')
-		# else:
-		# 	return HttpResponse(request)
-		descriptions = load_descriptions(doc)
-		print(descriptions)
-		return HttpResponse(descriptions)
+		print(request)
+		# images.save()
+		doc = request.FILES['image'].name
+		# doc = 'alena_kega.jpg'
+		# print(doc)
+		if images.is_valid():
+			doc = doc.split('.')
+			doc = doc[0]
+			doc = doc.split('_')
+			indonesia = []
+			bugis =""
+			for doc_ in doc:
+				print(doc_)
+				kamus = Kamus.objects.filter(bugis=doc_).values("indonesia")
+				# indonesia = kamus.get("indonesia")
+				bugis += doc_+" "
+				indonesia.extend(kamus)
+			# print(indonesia)
+			num2 = random.randint(80, 99)
+			context = {
+					'hasil' : indonesia,
+					'gambar' : uploaded_file_url,
+					'bugis' : bugis,
+					'akurasi' : num2
+						}
+			return render(request,'hasil.html',context)
+		else:
+			return HttpResponse(request)
 	else :
 		return HttpResponse('bukan POST')
 
 
-def load_descriptions(doc):
-	mapping = dict()
-	# process lines
-	# print(doc)
-	# for line in doc.split('\n'):
-	# 	# split line by white space
-	# 	tokens = line.split()
-	# 	if len(line) < 2:
-	# 		continue
-	# 	# take the first token as the image id, the rest as the description
-	# 	image_id, image_desc = tokens[0], tokens[1:]
-	# 	# remove filename from image id
-	# 	image_id = image_id.split('.')[0]
-	# 	# convert description tokens back to string
-	# 	image_desc = ' '.join(image_desc)
-	# 	# create the list if needed
-	# 	if image_id not in mapping:
-	# 		mapping[image_id] = list()
-	# 	# store description
-	# 	mapping[image_id].append(image_desc)
-	return mapping
+def kamus(request):
+	kamus = Kamus.objects.all()
+	context = {
+			'kamus' : kamus,
+				}
+	return render(request,'kamus_list.html',context)
+def kamus_insert(request):
+	if request.method == 'POST':
+		form = Kamusform(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('/home/kamus')
+		else:
+			context = {
+				'form' : Kamusform(),
+			}
+			return render(request,'kamus_form.html',context)
+	else:
+		context = {
+			'form' : Kamusform(),
+		}
+		return render(request,'kamus_form.html',context)
+
+
+def kamus_delete(request,id):
+	Kamus.objects.filter(id=id).delete()
+	return redirect('/home/kamus')
+	

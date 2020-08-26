@@ -25,7 +25,7 @@ SECRET_KEY = '1xkh1wjnw3xe=j&rauklp$enls10lbv6sz5ul1t5d3x_51q%or'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kocplay.com','localhost']
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -132,5 +132,5 @@ USE_TZ = True
 STATIC_URL = '/assets/'
 STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'assets'),]
 
-MEDIA_URL = '/images/'
-MEDIA_ROOT  = os.path.join(BASE_DIR,'images')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
