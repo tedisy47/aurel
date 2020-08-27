@@ -55,32 +55,35 @@
             <!-- /.card -->
 
             <div class="card">
-          <div class="card-header">
-            <h2>Hasil Terjemah</h2>
-          </div>
-          <div class="card-body" style="height: 500px">
-            <table class="table table-striped table-bordered">
-              <thead class="bg-primary">
-                <tr>
-                  <th width="3%">No</th>
-                  <th class="text-center">Gambar</th>
-                  <th>Bahasa bugis</th>
-                  <th>Terjemah</th>
-                  <th>Akurasi</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td align="center"><img class="img img-fluid" style="width: 200px;height: 150px;" src="{{gambar}}"></td>
-                  <td align="left">{{bugis}}</td>
-                  <td> {% for hasil in hasil %}{{hasil.indonesia}}&nbsp;{% endfor %}</td>
-                  <td>{{akurasi}}%</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+              <div class="card-header">
+                <h3 class="card-title"></h3>
+                <a href="../data_latih_insert" class="btn btn-primary float-right" title="Tambah Data Latih"><i class="fa fa-plus"></i></a>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-striped" id="example1">
+                  <thead class="bg-primary">
+                    <tr>
+                      <th>ID</th>
+                      <th>Gambar</th>
+                      <th>deskripsi</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for data_latih in data_latih %}
+                    <tr>
+                      <td>{{data_latih.id}}</td>
+                      <td><img src="{{data_latih.gambar}}" style="width: 150; height: 100"></td>
+                      <td>{{data_latih.deskripsi}}</td>
+                      <td><a onclick="return confirm('Apakan Anda yakin ingin menghapus data ini?')" class="btn btn-danger" href="../data_latih_delete/{{data_latih.id}}"><i class="fa fa-trash"></i></a></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
             <!-- /.card -->
           </div>
           <!-- /.col -->

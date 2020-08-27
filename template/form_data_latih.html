@@ -55,32 +55,26 @@
             <!-- /.card -->
 
             <div class="card">
-          <div class="card-header">
-            <h2>Hasil Terjemah</h2>
-          </div>
-          <div class="card-body" style="height: 500px">
-            <table class="table table-striped table-bordered">
-              <thead class="bg-primary">
-                <tr>
-                  <th width="3%">No</th>
-                  <th class="text-center">Gambar</th>
-                  <th>Bahasa bugis</th>
-                  <th>Terjemah</th>
-                  <th>Akurasi</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td align="center"><img class="img img-fluid" style="width: 200px;height: 150px;" src="{{gambar}}"></td>
-                  <td align="left">{{bugis}}</td>
-                  <td> {% for hasil in hasil %}{{hasil.indonesia}}&nbsp;{% endfor %}</td>
-                  <td>{{akurasi}}%</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+              <div class="card-header">
+                <h3 class="card-title">Upload gambar disini</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <form method="POST"  enctype= multipart/form-data>
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label>Gambar</label>
+                    <input type="file" class="form-control" name="gambar">
+                  </div>
+                  <div class="form-group">
+                    <label>Deskripsi</label>
+                    <input type="text" class="form-control" name="deskripsi">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
             <!-- /.card -->
           </div>
           <!-- /.col -->

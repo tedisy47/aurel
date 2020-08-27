@@ -8,11 +8,15 @@ from image_description import views as image_description
 
 
 url_image = [
-	url(r'^$',image_description.index),
-    url(r'^upload_image/$',image_description.upload_image),
-    url(r'^kamus/$',image_description.kamus),
+	url(r'^$',image_description.index, name="home"),
+    url(r'^upload_image/$',image_description.upload_image, name="uploadimage"),
+    url(r'^kamus/$',image_description.kamus, name="kamus"),
     url(r'^kamus_insert/$',image_description.kamus_insert),    
     url(r'^kamus_delete/(?P<id>\d+)$', image_description.kamus_delete),
+    url(r'^histori/$', image_description.histori,name="histori"),
+    url(r'^data_latih/$',image_description.data_latih, name="data_latih"),
+    url(r'^data_latih_insert/$',image_description.data_latih_insert),    
+    url(r'^data_latih_delete/(?P<id>\d+)$', image_description.data_latih_delete),
 ]
 urlpatterns = [
     url('admin/', admin.site.urls),

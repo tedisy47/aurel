@@ -29,7 +29,8 @@ def login(requests):
 				auth_login(requests, user)
 				messages.add_message(requests, messages.INFO, 'Selamat datang.')
 				return redirect('/home/')
-				# return HttpResponse('ok')
+			return HttpResponse('user tidak akitf')
+		return HttpResponse('user tidak akitf')
 	else:
 		return redirect('/welcome/')
 

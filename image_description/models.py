@@ -9,3 +9,14 @@ class Kamus(models.Model):
 	bugis = models.CharField(max_length=225)
 	indonesia = models.CharField(max_length=225)
 		
+class Histori(models.Model):
+	gambar = models.CharField(max_length=225)
+	bugis = models.CharField(max_length=225)
+	indonesia = models.CharField(max_length=225)
+	akurasi = models.IntegerField()		
+
+class Data_latih(models.Model):
+	gambar = models.CharField(max_length=225)
+	deskripsi = models.CharField(max_length=225)
+
+		

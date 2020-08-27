@@ -36,7 +36,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Terjemah</h1>
+            <h1>Kamus</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -56,7 +56,7 @@
 
             <div class="card">
           <div class="card-header">
-            <h2>Hasil Terjemah</h2>
+            <h2>Histori</h2>
           </div>
           <div class="card-body" style="height: 500px">
             <table class="table table-striped table-bordered">
@@ -70,13 +70,15 @@
                 </tr>
               </thead>
               <tbody>
+                {% for histori_list in histori %}
                 <tr>
                   <td>1</td>
-                  <td align="center"><img class="img img-fluid" style="width: 200px;height: 150px;" src="{{gambar}}"></td>
-                  <td align="left">{{bugis}}</td>
-                  <td> {% for hasil in hasil %}{{hasil.indonesia}}&nbsp;{% endfor %}</td>
-                  <td>{{akurasi}}%</td>
+                  <td align="center"><img class="img img-fluid" style="width: 200px;height: 150px;" src="{{histori_list.gambar}}"></td>
+                  <td align="left">{{histori_list.bugis}}</td>
+                  <td>{{histori_list.indonesia}}</td>
+                  <td>{{histori_list.akurasi}}%</td>
                 </tr>
+                {% endfor %}
               </tbody>
             </table>
           </div>
